@@ -1,0 +1,65 @@
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<html xmlns:th="http://www.thymeleaf.org">
+<title>English-Việt Nam</title>
+<meta charset="utf-8">
+<body>
+	Thêm:
+	<form method="post" action="/" class="card">
+		<div class="row">
+			<div class="col-md-6">
+				<input name="eng" id="eng" class="form-control"
+					placeholder="English">
+			</div>
+			<div class="col-md-6">
+				<input name="vi" id="vi" class="form-control"
+					placeholder="Tiếng việt">
+			</div>
+		</div>
+		<button type="submit" class="btn btn-success">Thêm</button>
+	</form>
+	Tìm kiếm:
+	<form method="get" action="/seach" class="card">
+		<div class="row">
+			<div class="col-md-6">
+				<input name="seach" id="seach" class="form-control"
+					placeholder="Vocabulary-Từ vựng">
+			</div>
+			<div class="col-md-6">
+				<button type="submit" class="btn btn-success">Tìm</button>
+			</div>
+		</div>
+
+	</form>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>STT</th>
+				<th>English</th>
+				<th>Tiếng việt</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="vocabulary,iterStat : ${vocabularies}">
+				<td style="width: 10%" class="text-center"
+					th:text="${iterStat.count}"></td>
+				<td><label th:text="${vocabulary.eng}"></label></td>
+				<td><label th:text="${vocabulary.vi}"></label></td>
+				<td><a th:if="${!vocabulary.enable}"
+					th:href="@{change/{id}/(id=${vocabulary.id})}">
+						<button type="submit" class="btn btn-danger">Đã học</button>
+				</a> <a th:if="${vocabulary.enable}"
+					th:href="@{change/{id}/(id=${vocabulary.id})}">
+						<button type="submit" class="btn btn-success">Chưa học</button>
+				</a> <a th:href="@{edit/{id}/(id=${vocabulary.id})}">
+						<button type="submit" class="btn btn-success">Sửa</button>
+				</a></td>
+
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
