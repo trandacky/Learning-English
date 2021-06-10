@@ -6,20 +6,23 @@
 <title>English-Việt Nam</title>
 <meta charset="utf-8">
 <body>
-	Thêm:
-	<form method="post" action="/edit" class="card" th:object="${vocabulary}">
-	<input name="id" type="hidden" id="id" class="form-control" th:value="${vocabulary.id}">
+	<h4>Sửa</h4>
+	<form method="post" action="/edit" th:object="${vocabulary}">
+		<input name="id" type="hidden" id="id" class="form-control"
+			th:value="${vocabulary.id}">
 		<div class="row">
 			<div class="col-md-6">
-				<input name="eng" id="eng" class="form-control" th:value="${vocabulary.eng}"
-					placeholder="English">
+				English <input name="eng" id="eng" class="form-control"
+					th:value="${vocabulary.eng}" placeholder="English">
 			</div>
 			<div class="col-md-6">
-				<input name="vi" id="vi" class="form-control" th:value="${vocabulary.vi}"
-					placeholder="Tiếng việt">
+				Tiếng Việt <input name="vi" id="vi" class="form-control"
+					th:value="${vocabulary.vi}" placeholder="Tiếng việt">
+			</div>
+			<div class="col-md-2">
+				<button type="submit" class="btn btn-success">Sửa</button>
 			</div>
 		</div>
-		<button type="submit" class="btn btn-success">Sửa</button>
 	</form>
 </body>
 </html>

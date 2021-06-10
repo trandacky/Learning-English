@@ -6,22 +6,26 @@
 <title>English-Việt Nam</title>
 <meta charset="utf-8">
 <body>
-	Thêm:
+
 	<form method="post" action="/" class="card">
+		<h4>Thêm</h4>
 		<div class="row">
 			<div class="col-md-6">
-				<input name="eng" id="eng" class="form-control"
+				English: <input name="eng" id="eng" class="form-control"
 					placeholder="English">
 			</div>
 			<div class="col-md-6">
-				<input name="vi" id="vi" class="form-control"
+				Tiếng Việt: <input name="vi" id="vi" class="form-control"
 					placeholder="Tiếng việt">
 			</div>
+			<div class="col-md-2">
+				<button type="submit" class="btn btn-success">Thêm</button>
+			</div>
 		</div>
-		<button type="submit" class="btn btn-success">Thêm</button>
+
 	</form>
 	Tìm kiếm:
-	<form method="get" action="/seach" class="card">
+	<form method="get" action="/seach">
 		<div class="row">
 			<div class="col-md-6">
 				<input name="seach" id="seach" class="form-control"
@@ -36,7 +40,7 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th>STT</th>
+				<th class="text-center">STT</th>
 				<th>English</th>
 				<th>Tiếng việt</th>
 				<th>Action</th>
@@ -44,7 +48,7 @@
 		</thead>
 		<tbody>
 			<tr th:each="vocabulary,iterStat : ${vocabularies}">
-				<td style="width: 10%" class="text-center"
+				<td style="width: 5%" class="text-center"
 					th:text="${iterStat.count}"></td>
 				<td><label th:text="${vocabulary.eng}"></label></td>
 				<td><label th:text="${vocabulary.vi}"></label></td>
@@ -55,7 +59,7 @@
 					th:href="@{change/{id}/(id=${vocabulary.id})}">
 						<button type="submit" class="btn btn-success">Chưa học</button>
 				</a> <a th:href="@{edit/{id}/(id=${vocabulary.id})}">
-						<button type="submit" class="btn btn-success">Sửa</button>
+						<button type="submit" class="btn btn-warning">Sửa</button>
 				</a></td>
 
 			</tr>
