@@ -67,7 +67,7 @@ public class VocabularyServiceImpl implements VocabularyService{
 
 	@Override
 	public List<Vocabulary> getVocabulary(int count) {
-		Pageable paging = PageRequest.of(0, count, Sort.by("eng").descending());
+		Pageable paging = PageRequest.of(0, count, Sort.by("id").ascending());
 		Page<Vocabulary> pageable = vocabularyRepository.getVocabulary(paging);
 		return pageable.getContent();
 	}

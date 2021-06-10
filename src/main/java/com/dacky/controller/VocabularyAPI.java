@@ -14,7 +14,7 @@ import com.dacky.service.VocabularyService;
 @RestController
 @RequestMapping("/api")
 public class VocabularyAPI {
-	private final int count=10;
+	private final int count=15;
 	
 	@Autowired 
 	private VocabularyService vocabularyService;

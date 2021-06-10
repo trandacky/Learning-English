@@ -1,5 +1,6 @@
 package com.dacky.controller;
 
+import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +26,8 @@ public class WebController {
 	@GetMapping
 	public String index(Model model) {
 		List<Vocabulary> vocabularies=vocabularyService.findAll();
+		vocabularies.sort(Comparator.comparing(Vocabulary::getEng));
+		
 		model.addAttribute("vocabularies", vocabularies);
 		return "index";
 	}
@@ -34,12 +37,16 @@ public class WebController {
 		String vi = request.getParameter("vi");
 		vocabularyService.save(eng,vi);
 		List<Vocabulary> vocabularies=vocabularyService.findAll();
+		vocabularies.sort(Comparator.comparing(Vocabulary::getEng));
+		
 		model.addAttribute("vocabularies", vocabularies);
 		return "index";
 	}
 	@GetMapping(value="/seach")
 	public String seach(@RequestParam("seach") String seach,Model model) {
 		List<Vocabulary> vocabularies=vocabularyService.seach(seach);
+		vocabularies.sort(Comparator.comparing(Vocabulary::getEng));
+		
 		model.addAttribute("vocabularies", vocabularies);
 		return "index";
 	}
